@@ -20,6 +20,16 @@ Route::post('/edit', [DataUserController::class, 'update']);
 Route::get('/delete',[DataUserController::class,'delete']);
 Route::post('/delete',[DataUserController::class,'remove']);
 
+Route::group(['middleware' => ['auth']], function() {
+    Route::get('user/index', 'DataUserController@index')->name('user/index');
+    Route::get('user/show/{id}', 'DataUserController@show')->name('user/show');
+});
+
+
+Route::group(['middleware' => 'auth'], function() {
+    Route::post('/workstart', 'TimestampController@workstart')->name('timestamp/workstart');
+    Route::post('/workend', 'TimestampController@workend')->name('timestamp/workend');
+});
 
 
 

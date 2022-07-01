@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Timestamp extends Model
 {
-    protected $fillable = ['user_id', 'punchIn', 'punchOut'];
+    protected $fillable = ['user_id', 'workstart', 'workend'];
 
     /**
      * ユーザー関連付け

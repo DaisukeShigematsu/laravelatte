@@ -17,8 +17,8 @@ class CreateRestsTable extends Migration
             $table->id();
             $table->id('users_id');
             $table->id('timestamp_id');
-            $table->datetime('rest_start')->nullable();
-            $table->datetime('rest_end')->nullable();
+            $table->datetime('reststart')->nullable();
+            $table->datetime('restend')->nullable();
             $table->timestamps();
         });
     }

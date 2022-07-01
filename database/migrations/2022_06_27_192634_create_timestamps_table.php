@@ -16,10 +16,11 @@ class CreateTimestampsTable extends Migration
         Schema::create('timestamps', function (Blueprint $table) {
             $table->id();
             $table->id('users_id');
-            $table->datetime('work_start')->nullable();
-            $table->datetime('work_end')->nullable();
+            $table->datetime('workstart')->nullable();
+            $table->datetime('workend')->nullable();
             $table->timestamps();
 
+            $table->foreign('user_id')->references('id')->on('users');
 
         });
     }
