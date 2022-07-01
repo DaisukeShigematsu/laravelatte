@@ -1,0 +1,16 @@
+.user-content {
+
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+}
+
+.button-form ul {
+  padding-left: 0;
+  padding-right: auto;
+  text-align: center;
+}
+
+.button-form ul li {
+  display: inline-block;
+}
