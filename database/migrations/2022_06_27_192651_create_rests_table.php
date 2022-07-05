@@ -15,11 +15,13 @@ class CreateRestsTable extends Migration
     {
         Schema::create('rests', function (Blueprint $table) {
             $table->id();
-            $table->id('users_id');
-            $table->id('timestamp_id');
+            $table->foreign('stamp_id')->references('id')->on('timestamps');
+            $table->foreign('rest_id')->references('id')->on('users');
             $table->datetime('reststart')->nullable();
             $table->datetime('restend')->nullable();
-            $table->timestamps();
+            $table->datetime('total_rest')->nullable();
+            $table->timestamp('created_at')->useCurrent()->nullable();
+            $table->timestamp('updated_at')->useCurrent()->nullable();
         });
     }
 
