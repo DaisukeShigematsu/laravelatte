@@ -1,4 +1,6 @@
+@extends('layouts.layout')
 
+@section('content')
 
 <x-guest-layout>
     <x-auth-card>
@@ -14,7 +16,7 @@
         <form method="POST" action="{{ route('login') }}">
             @csrf
 
-            <!-- Email Address -->
+            <!-- mail -->
             <div>
                 <x-label for="name" :value="__('氏名')" />
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
@@ -43,3 +45,5 @@
         </form>
     </x-auth-card>
 </x-guest-layout>
+
+@endsection

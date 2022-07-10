@@ -1,9 +1,11 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
+use App\Models\Rest;
 
 class Timestamp extends Model
 {
@@ -15,7 +17,7 @@ class Timestamp extends Model
         'user_id',
         'workstart',
         'workend',
-        'total_work'
+        'date'
     ];
 
 

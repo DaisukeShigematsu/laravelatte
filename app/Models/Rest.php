@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -13,31 +13,11 @@ use HasApiTokens, HasFactory, Notifiable;
      * @var array<int, string>
      */
     protected $fillable = [
-        'user_id',
+        'stamp_id',
         'reststart',
         'restend',
-        'total_rest'
-    ];
-
-    
-    /**
-     * The attributes that should be hidden for serialization.
-     * @var array<int, string>
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
     ];
 
 
-    /**
-     * タイムスタンプ関連付け
-     * 1対多
-     */
-    public function timestamp()
-    {
-        return $this->belongsto(Timestamp::class);
-    }
 
-
-  }
+}

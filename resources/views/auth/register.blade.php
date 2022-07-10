@@ -1,3 +1,8 @@
+
+@extends('layouts.layout')
+
+@section('content')
+
 <x-guest-layout>
 
 
@@ -56,3 +61,6 @@
         </form>
     </x-auth-card>
 </x-guest-layout>
+
+
+@endsection

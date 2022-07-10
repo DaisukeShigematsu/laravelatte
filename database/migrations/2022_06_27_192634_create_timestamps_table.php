@@ -15,12 +15,10 @@ class CreateTimestampsTable extends Migration
     {
         Schema::create('timestamps', function (Blueprint $table) {
             $table->id();
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->datetime('workstart')->nullable();
-            $table->datetime('workend')->nullable();
-            $table->datetime('total_rest')->nullable();
-            $table->datetime('total_work')->nullable();
-            $table->date('stamp_date')->nullable();
+            $table->foreignID('user_id')->constrained();
+            $table->time('workstart');
+            $table->time('workend');
+            $table->date('date');
             $table->timestamp('created_at')->useCurrent()->nullable();
             $table->timestamp('updated_at')->useCurrent()->nullable();
         });

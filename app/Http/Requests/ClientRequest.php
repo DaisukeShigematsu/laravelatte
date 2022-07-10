@@ -28,21 +28,29 @@ class ClientRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'email' => 'required|email',
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|min:6|max:255|confirmed',
         ];
     }
         public function messages()
     {
         return [
             'name.required' => '名前を入力してください',
+            'name.string' => '正しい形式で入力してください',
+            'name.max' => '255文字以下で入力してください',
+
             'email.required' => 'メールアドレスを入力してください',
-            'email.email' => 'メールアドレスの形式で入力してください',
+            'email.max' => '255文字以下で入力してください',
+            'email.email' => '正しい形式で入力してください',
+            'email.unique' => 'このメールアドレスは既に登録済です',
+
+            'password.required' => 'パスワードを入力してください',
+            'password.min' => '6文字以上で入力してください',
+            'password.max' => '255文字以下で入力してください',
+            'password.confirmed' => 'パスワードが一致していません',
         ];
     }
-    protected function getRedirectUrl()
-    {
-        return 'verror';
-    }
+
 
 }

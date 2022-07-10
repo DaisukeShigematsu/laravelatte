@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Rest;
-use App\Models\Attendance;
+use App\Models\Timestamp;
 use Carbon\Carbon;
 
 class RestController extends Controller
