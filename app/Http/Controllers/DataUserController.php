@@ -31,38 +31,16 @@ class DataUserController extends Controller
         return redirect('/data');
     }
 
-    public function edit(Request $request)
+    public function relate(Request $request) 
     {
-        $param = ['id' => $request->id];
-        $item = DB::table('users')-> where('id',$request->id)->first();
-        return view('edit', ['form' => $item]);
+        $items = data::all();
+        return view('data', ['items' => $items]);
     }
 
-    public function update(Request $request)
-    {
-        $param = [
-            'name'       => $request->name,
-            'id'         => $request->id,
-            'password'   => $request->password,
-            'workstart' => $request->workstart,
-            'workend'   => $request->workend,
-            'updated_at' => $request->updated_at,
-        ];
-        DB::table('users')->where('id',$request->id)->update($param);
-        return redirect('/data');
-    }
 
-    public function delete(Request $request)
-    {
-        $param = ['id' => $request->id];
-        $item = DB::table('users')-> where('id',$request->id) ->delete();
-        return view('delete', ['form' => $item]);
-    }
-    public function remove(Request $request)
-    {
-        $param = ['id' => $request->id];
-        DB::table('users')->where('id',$request->id) ->delete();
-        return redirect('/');
-    }
+
+
+
+
 
 }

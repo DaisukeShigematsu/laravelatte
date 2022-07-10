@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DataUserController;
-use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\TimestampController;
 use App\Http\Controllers\RestController;
 
 
@@ -10,26 +10,13 @@ Route::get('/dashboard', function () {return view('dashboard');})->middleware(['
 Route::get('/', function () {return view('dashboard');})->middleware('auth');
 
 
-Route::get('/data', [DataUserController::class, 'index']);
-Route::get('/add',  [DataUserController::class, 'add']);
-Route::post('/add', [DataUserController::class, 'create']);
+Route::post('/Timestamp/start', [TimestampController::class, 'start'])->name('Timestamp.start');
+Route::post('/Timestamp/end', [TimestampController::class, 'end'])->name('Timestamp.end');
+Route::get('/date', [TimestampController::class, 'index'])->name('Timestamp.date');
 
-Route::get('/edit', [DataUserController::class, 'edit']);
-Route::post('/edit', [DataUserController::class, 'update']);
+Route::post('/rest/start', [RestController::class, 'start'])->name('rest.start');
+Route::post('/rest/end', [RestController::class, 'end'])->name('rest.end');
 
-Route::get('/delete',[DataUserController::class,'delete']);
-Route::post('/delete',[DataUserController::class,'remove']);
-
-Route::group(['middleware' => ['auth']], function() {
-    Route::get('user/index', 'DataUserController@index')->name('user/index');
-    Route::get('user/show/{id}', 'DataUserController@show')->name('user/show');
-});
-
-
-Route::group(['middleware' => 'auth'], function() {
-    Route::post('/workstart', 'TimestampController@workstart')->name('timestamp/workstart');
-    Route::post('/workend', 'TimestampController@workend')->name('timestamp/workend');
-});
 
 
 

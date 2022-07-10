@@ -2,11 +2,22 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Timestamp extends Model
 {
-    protected $fillable = ['user_id', 'workstart', 'workend'];
+    /**
+     * The attributes that are mass assignable.
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'user_id',
+        'workstart',
+        'workend',
+        'total_work'
+    ];
+
 
     /**
      * ユーザー関連付け
@@ -16,4 +27,14 @@ class Timestamp extends Model
     {
         $this->belongsTo(User::class);
     }
+
+    /**
+     * Rest関連付け 1対多
+     */
+    public function rest()
+    {
+        return $this->hasMany(Rest::class);
+    }
+
+
 }

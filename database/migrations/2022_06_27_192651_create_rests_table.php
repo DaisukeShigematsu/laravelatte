@@ -15,8 +15,9 @@ class CreateRestsTable extends Migration
     {
         Schema::create('rests', function (Blueprint $table) {
             $table->id();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('stamp_id')->references('id')->on('timestamps');
-            $table->foreign('rest_id')->references('id')->on('users');
+            $table->foreign('rests_id')->references('id')->on('timestamps');
             $table->datetime('reststart')->nullable();
             $table->datetime('restend')->nullable();
             $table->datetime('total_rest')->nullable();

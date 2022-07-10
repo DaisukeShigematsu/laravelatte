@@ -15,7 +15,7 @@ class CreateTimestampsTable extends Migration
     {
         Schema::create('timestamps', function (Blueprint $table) {
             $table->id();
-            $table->foreign('users_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->datetime('workstart')->nullable();
             $table->datetime('workend')->nullable();
             $table->datetime('total_rest')->nullable();
@@ -23,7 +23,6 @@ class CreateTimestampsTable extends Migration
             $table->date('stamp_date')->nullable();
             $table->timestamp('created_at')->useCurrent()->nullable();
             $table->timestamp('updated_at')->useCurrent()->nullable();
-
         });
     }
 

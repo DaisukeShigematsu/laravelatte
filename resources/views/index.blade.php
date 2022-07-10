@@ -13,8 +13,11 @@
       background-color: #EEEEEE;
       text-align: center;
     }
+        td table tbody tr td {
+      background-color:#EEEEEE !important;
+    }
 </style>
-@section('title', 'index.blade.php')
+@section('title', 'user.index.blade.php')
 
 @section('content')
 <table>
@@ -28,16 +31,18 @@
   @foreach ($items as $item)
   <tr>
     <td>
-      {{$item->id}}
+      {{$item->getDetail()}}
     </td>
     <td>
-      {{$item->name}}
-    </td>
-    <td>
-      {{$item->email}}
-    </td>
-    <td>
-      {{$item->created_at}}
+    @($item->users!=null)
+      <table width="100%">
+        @foreach($item->users as $obj)
+          <tr>
+            <td>{{$obj->getDetail()}}</td>
+          </tr>
+        @endforeach
+      </table>
+    @endif
     </td>
   </tr>
   @endforeach
