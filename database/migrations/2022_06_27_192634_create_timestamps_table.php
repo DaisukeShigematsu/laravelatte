@@ -15,7 +15,7 @@ class CreateTimestampsTable extends Migration
     {
         Schema::create('timestamps', function (Blueprint $table) {
             $table->id();
-            $table->foreignID('user_id')->constrained();
+            $table->foreignID('user_id')->constrained('users');
             $table->time('workstart');
             $table->time('workend');
             $table->date('date');

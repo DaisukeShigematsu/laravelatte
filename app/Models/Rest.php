@@ -8,15 +8,23 @@ use Illuminate\Database\Eloquent\Model;
 class Rest extends Model
 {
 use HasApiTokens, HasFactory, Notifiable;
-    /**
-     * The attributes that are mass assignable.
-     * @var array<int, string>
-     */
+
+    protected $table = 'rests';
+
+
     protected $fillable = [
         'stamp_id',
         'reststart',
         'restend',
     ];
+/**
+     * ユーザー関連付け
+     * 1対多
+     */
+    public function timestamp()
+    {
+        $this->belongsTo(Timestamp::class);
+    }
 
 
 

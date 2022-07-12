@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layout')
 
 @section('content')
 
@@ -23,9 +23,9 @@
 
             <tr class="tableContent">
                 <td>{{$timestamp->user->name}}</td>
-                <td>{{$timestamp->start_time}}</td>
-                <td>{{$timestamp->end_time}}</td>
-                <td>{{$timestamp->rest->start_time}}</td>
+                <td>{{$timestamp->workstart}}</td>
+                <td>{{$timestamp->workend}}</td>
+                <td>{{$timestamp->rest->workstart}}</td>
                 <td>勤務時間</td>
             </tr>
 
@@ -38,4 +38,3 @@
 </div>
 
 @endsection
-Footer

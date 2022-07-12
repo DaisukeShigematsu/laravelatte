@@ -9,10 +9,9 @@ use App\Models\Rest;
 
 class Timestamp extends Model
 {
-    /**
-     * The attributes that are mass assignable.
-     * @var array<int, string>
-     */
+    // テーブルの関連付け
+    protected $table = 'timestamps';
+    // 更新できる内容
     protected $fillable = [
         'user_id',
         'workstart',

@@ -12,7 +12,6 @@
     <header class="site-header">
         <div class="wrapper site-header__wrapper">
             <a href="#" class="brand">Atte</a>
-
             @if(Auth::check())
             <nav class="nav">
                 <button class="nav__toggle" aria-expanded="false" type="button">menu</button>
@@ -28,7 +27,6 @@
                 </ul>
             </nav>
             @endif
-
         </div>
     </header>
 

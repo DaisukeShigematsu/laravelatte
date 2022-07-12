@@ -70,7 +70,6 @@ class RestController extends Controller
 
         // このログインユーザーの最新のレコードの日付を取得
         $latestTimestampDate = $latestTimestamp->date;
-
         // 今日の日付を取得
         $timestampDate = $timestampDay->format('Y-m-d');
 

@@ -28,7 +28,6 @@
                         </div>
                     </div>
 
-
                     <div class="p-6 border-t border-gray-700 dark:border-gray-900">
                         <div class="flex items-center">
                             <div class="ml-4 text-lg leading-7 font-semibold">
@@ -41,7 +40,6 @@
                         </div>
                     </div>
 
-
                     <div class="p-6 border-t border-gray-700 dark:border-gray-900 md:border-l">
                         <div class="flex items-center">
                             <div class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">
@@ -53,14 +51,15 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
-
             <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
                 <div class="text-center text-sm text-gray-500 sm:text-left">
                 </div>
-            <div class="bg-black  overflow-hidden shadow-sm sm:rounded-lg">
-                Laravelv{{Illuminate\Foundation\Application::VERSION}}(PHPv{{PHP_VERSION}})
-            </div>
 </x-app-layout>
+            <footer class="text-center text-lg text-gray-500 leading-10">
+                <p>Atte, inc.</p>
+                <div class="bg-black  shadow-sm sm:rounded-lg text-right width=48">
+                Laravelv{{Illuminate\Foundation\Application::VERSION}}(PHPv{{PHP_VERSION}})
+                </div>
+            </footer>

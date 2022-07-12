@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('dashboard')
 
 @section('content')
 
@@ -10,19 +10,17 @@
             @csrf
             <button class="stamp">勤務開始</button>
         </form>
-
         <form class="stamp" method="POST" action="/timestamp/end">
             @csrf
             <button class="stamp">勤務終了</button>
         </form>
-
         <form class="stamp" method="POST" action="/rest/start">
             @csrf
             <button class="stamp">休憩開始</button>
         </form>
 
         <form class="stamp" method="POST" action="/rest/end">
-            @csrf
+            @cs                                                                                                         rf
             <button class="stamp">休憩終了</button>
         </form>
 
