@@ -31,22 +31,18 @@ class User extends Authenticatable
     ];
 
     /**
-     * Timestamp関連付け 1対多
-     */
-    public function timestamp()
-    {
-        return $this->hasMany(Timestamp::class);
-    }
-
-
-    /**
      * The attributes that should be cast.
      * @var array<string, string>
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-
-
     ];
 
+    /**
+     * Timestamp関連付け 1対多
+     */
+    //public function Attendances()
+    //{
+    //    return $this->hasMany(App\Models\Attendance');
+    //}
 }

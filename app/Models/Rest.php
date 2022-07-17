@@ -7,25 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rest extends Model
 {
-use HasApiTokens, HasFactory, Notifiable;
-
-    protected $table = 'rests';
-
-
     protected $fillable = [
-        'stamp_id',
-        'reststart',
-        'restend',
+        'attendance_id',
+        'start_time',
+        'end_time',
     ];
-/**
+    /**
      * ユーザー関連付け
      * 1対多
      */
-    public function timestamp()
-    {
-        $this->belongsTo(Timestamp::class);
-    }
-
-
-
+    //public function attendance()
+    //{
+    //    $this->belongsTo(attendance::class);
+    //}
 }

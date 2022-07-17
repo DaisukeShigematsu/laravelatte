@@ -7,18 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Rest;
 
-class Timestamp extends Model
+class Attendance extends Model
 {
-    // テーブルの関連付け
-    protected $table = 'timestamps';
-    // 更新できる内容
+
     protected $fillable = [
         'user_id',
-        'workstart',
-        'workend',
+        'start_time',
+        'end_time',
         'date'
     ];
-
 
     /**
      * ユーザー関連付け
@@ -36,6 +33,5 @@ class Timestamp extends Model
     {
         return $this->hasMany(Rest::class);
     }
-
 
 }

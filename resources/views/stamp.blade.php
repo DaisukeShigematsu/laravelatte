@@ -1,4 +1,4 @@
-@extends('dashboard')
+@extends('layouts.layout')
 
 @section('content')
 
@@ -6,11 +6,11 @@
     <p class="message">{{$user}}さんお疲れ様です！</p>
 
     <div class="container">
-        <form class="stamp" method="POST" action="/timestamp/start">
+        <form class="stamp" method="POST" action="/attendandce/start">
             @csrf
             <button class="stamp">勤務開始</button>
         </form>
-        <form class="stamp" method="POST" action="/timestamp/end">
+        <form class="stamp" method="POST" action="/attendance/end">
             @csrf
             <button class="stamp">勤務終了</button>
         </form>

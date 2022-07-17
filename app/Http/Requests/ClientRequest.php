@@ -13,12 +13,9 @@ class ClientRequest extends FormRequest
      */
     public function authorize()
     {
-        if ($this->path() == '/') {
-            return true;
-        } else {
-            return false;
-        }
+        return true;
     }
+
 
     /**
      * Get the validation rules that apply to the request.
@@ -27,6 +24,11 @@ class ClientRequest extends FormRequest
      */
     public function rules()
     {
+        // return [
+        //     'name' => ['required', 'string', 'max:255'],
+        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        //     'password' => ['required', 'min:8', 'max:255', 'confirmed', Rules\Password::defaults()],
+        // ];
         return [
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:users',

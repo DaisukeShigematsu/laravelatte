@@ -19,13 +19,13 @@
                 <th>勤務時間</th>
             </tr>
 
-            @foreach($timestamps as $timestamp)
+            @foreach($attendances as $attendance)
 
             <tr class="tableContent">
-                <td>{{$timestamp->user->name}}</td>
-                <td>{{$timestamp->workstart}}</td>
-                <td>{{$timestamp->workend}}</td>
-                <td>{{$timestamp->rest->workstart}}</td>
+                <td>{{$attendance->user->name}}</td>
+                <td>{{$attendance->start_time}}</td>
+                <td>{{$attendance->end_time}}</td>
+                <td>{{$attendance->rest->start_time}}</td>
                 <td>勤務時間</td>
             </tr>
 
@@ -34,7 +34,7 @@
 
         </table>
     </div>
-    <p>{{ $timestamps->links() }}</p>
+    <p>{{ $attendances->links() }}</p>
 </div>
 
 @endsection

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Rest;
-use App\Models\Timestamp;
+use App\Models\Attendance;
 use Carbon\Carbon;
 
 class RestController extends Controller
@@ -14,31 +14,31 @@ class RestController extends Controller
     public function start()
     {
         $user_id = Auth::id();
-        $TimestampDay = Carbon::today();
+        $attendanceDay = Carbon::today();
 
         // このログインユーザーの最新のレコードを取得
-        $latestTimestamp = Timestamp::where('user_id', $user_id)->latest()->first();
+        $latestAttendance = Attendance::where('user_id', $user_id)->latest()->first();
 
-        if(empty($latestTimestamp)) {
+        if(empty($latestAttendance)) {
             return back()->with('error', '勤務情報がありません');
         }
 
         // このログインユーザーの最新のレコードのアテンダンスIDを取得
-        $timestampId = $latestTimestamp->id;
+        $attendanceId = $latestAttendance->id;
 
         // このログインユーザーの最新のレコードの日付を取得
-        $latestTimestampDate = $latestTimestamp->date;
+        $latestAttendanceDate = $latestAttendance->date;
 
         // 今日の日付を取得
-        $timestampDate = $timestampDay->format('Y-m-d');
+        $attendanceDate = $attendanceDay->format('Y-m-d');
 
         // このログインユーザーの最新のレコードのアテンダンスIDに紐づく最新の休憩レコードを取得
-        $latestRest = Rest::where('stamp_id', $timestampId)->latest()->first();
+        $latestRest = Rest::where('attendance_id', $attendanceId)->latest()->first();
 
-        if($timestampDate == $latestTimestampDate) {
-            if(empty($latestRest) || !empty($latestRest->end_time) && empty($latestTimestamp->end_time)) {
+        if($attendanceDate == $latestAttendanceDate) {
+            if(empty($latestRest) || !empty($latestRest->end_time) && empty($latestAttendance->end_time)) {
                 Rest::create([
-                    'timestamp_id' => $timestampId,
+                    'attendance_id' => $attendanceId,
                     'start_time' => Carbon::now(),
                 ]);
                 return back()->with('my_status', '休憩開始打刻が完了しました');
@@ -54,33 +54,31 @@ class RestController extends Controller
 
     public function end()
     {
-
         $user_id = Auth::id();
-        $timestampDay = Carbon::today();
+        $attendanceDay = Carbon::today();
 
         // このログインユーザーの最新のレコードを取得
-        $latesttimestamp = Timestamp::where('user_id', $user_id)->latest()->first();
+        $latestAttendance = Attendance::where('user_id', $user_id)->latest()->first();
 
-        if(empty($latestTimestamp)) {
+        if(empty($latestAttendance)) {
             return back()->with('error', '勤務情報がありません');
         }
 
         // このログインユーザーの最新のレコードのアテンダンスIDを取得
-        $timestampId = $latestTimestamp->id;
-
+        $attendanceId = $latestAttendance->id;
         // このログインユーザーの最新のレコードの日付を取得
-        $latestTimestampDate = $latestTimestamp->date;
+        $latestAttendanceDate = $latestAttendance->date;
         // 今日の日付を取得
-        $timestampDate = $timestampDay->format('Y-m-d');
+        $attendanceDate = $attendanceDay->format('Y-m-d');
 
         // このログインユーザーの最新のレコードのアテンダンスIDに紐づく最新の休憩レコードを取得
-        $latestRest = Rest::where('timestamp_id', $timestampId)->latest()->first();
+        $latestRest = Rest::where('attendance_id', $attendanceId)->latest()->first();
         if(empty($latestRest)) {
             return back()->with('error', '休憩情報がありません');
         }
 
-        if($timestampDate == $latestTimestampDate) {
-            if(empty($latestRest->end_time) && empty($latestTimestamp->end_time)){
+        if($attendanceDate == $latestattendanceDate) {
+            if(empty($latestRest->end_time) && empty($latestAttendance->end_time)){
                 $latestRest->update([
                     'end_time' => Carbon::now()
                 ]);

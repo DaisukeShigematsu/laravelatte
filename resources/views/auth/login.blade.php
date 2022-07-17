@@ -2,48 +2,37 @@
 
 @section('content')
 
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-        <h2>Atte</h2>
-        </x-slot>
+<div class="loginBackground">
+    <h1 class="loginH1">ログイン</h1>
 
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
-
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+    <div class="loginFormCard">
         <form method="POST" action="{{ route('login') }}">
             @csrf
 
-            <!-- mail -->
-            <div>
-                <x-label for="name" :value="__('氏名')" />
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
-            </div>
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('パスワード')" />
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="current-password" />
-            </div>
+        <!-- name -->
+        <div class="formItem">
+            <input id="name" placeholder=" 氏名" class="" type="name" name="name" :value="old('name')" required />
+        </div>
+        <!-- password -->
+        <div class="formItem">
+            <input id="password" placeholder=" パスワード" class="" type="password" name="password" :value="old('password')" required autocomplete="new-password" />
+        </div>
 
-            <div class="flex items-center mt-4">
-                <x-button class="block justify-center w-full  mb-4 mt-4">
-                    ログイン
-                </x-button>
-            </div>
-            <div class= "block mt-4 w-full text-center mb-4">
-                    アカウントお持ちでない方はこちらから
-            </div>
-            <a class="block w-full text-center mb-4 mt-4" href="{{ route('register') }}">
-                    会員登録
-            </a>
+        <!-- button -->
+        <div class="formItem">
+            <input id="button" type="submit" value="ログイン" class="button">
+        </div>
 
         </form>
-    </x-auth-card>
-</x-guest-layout>
+    </div>
+    <p class="registerMessage">アカウントをお持ちでない方はこちら</p>
+    <div class="registerTransition">
+        <a href="register">会員登録</a>
+    </div>
+
+</div>
+
+
+
 
 @endsection
