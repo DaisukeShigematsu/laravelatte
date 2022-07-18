@@ -1,10 +1,9 @@
-
 @extends('layouts.layout')
 
 @section('content')
 
 <div class="registerBackground">
-    <h1 class="registerH1">会員登録</h1>
+    <h1 class="register">会員登録</h1>
 
     <div class="errorMessage">
         @foreach($errors->all() as $error)

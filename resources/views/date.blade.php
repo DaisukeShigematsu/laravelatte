@@ -1,7 +1,6 @@
 @extends('layout')
 
 @section('content')
-
 <div class="dateBackground">
     <div class="wrapper">
         <div class="date">
@@ -36,5 +35,4 @@
     </div>
     <p>{{ $attendances->links() }}</p>
 </div>
-
 @endsection

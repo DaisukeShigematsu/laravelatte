@@ -1,7 +1,6 @@
 @extends('layouts.layout')
 
 @section('content')
-
 <div class="stampBackground">
     <p class="message">{{$user}}さんお疲れ様です！</p>
 
@@ -20,7 +19,7 @@
         </form>
 
         <form class="stamp" method="POST" action="/rest/end">
-            @cs                                                                                                         rf
+            @csrf
             <button class="stamp">休憩終了</button>
         </form>
 
