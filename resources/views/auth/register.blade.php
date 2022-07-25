@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="registerBackground">
-    <h1 class="register">会員登録</h1>
+    <h1 class="registerH1">会員登録</h1>
 
     <div class="errorMessage">
         @foreach($errors->all() as $error)
@@ -17,7 +17,7 @@
 
         <!-- name -->
         <div class="formItem">
-            <input id="name" placeholder=" 名前" class="" type="text" name="name" value="{{old('name')}}" autofocus />
+            <input id="name" placeholder=" 名前" class="" type="name" name="name" value="{{old('name')}}" autofocus />
         </div>
 
         <!-- mail -->

@@ -77,7 +77,7 @@ class RestController extends Controller
             return back()->with('error', '休憩情報がありません');
         }
 
-        if($attendanceDate == $latestattendanceDate) {
+        if($attendanceDate == $latestAttendanceDate) {
             if(empty($latestRest->end_time) && empty($latestAttendance->end_time)){
                 $latestRest->update([
                     'end_time' => Carbon::now()

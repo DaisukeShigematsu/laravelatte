@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="loginBackground">
-    <h1 class="login">ログイン</h1>
+    <h1 class="loginH1">ログイン</h1>
 
     <div class="loginFormCard">
         <form method="POST" action="{{ route('login') }}">
@@ -11,7 +11,7 @@
 
         <!-- mail -->
         <div class="formItem">
-            <input id="name" placeholder="氏名" class="" type="name" name="name" :value="old('name')" required />
+            <input id="name" placeholder="名前" class="" type="name" name="name" :value="old('name')" required />
         </div>
 
         <!-- password -->

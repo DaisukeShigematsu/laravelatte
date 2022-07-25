@@ -24,21 +24,21 @@ class AttendanceController extends Controller
         // DD($user);
         // DD($oldAttendance);
 
-        if( !empty($oldAttendance)){
+        if ( !empty($oldAttendance)) {
             $oldAttendanceDate = $oldAttendance->date;
-            $newAttendanceDate = $newAttendance->format('Y-m-d');
-        if($oldAttendanceDate = $newAttendanceDate){
-            return back()->with('error','既に出勤打刻がされています');
+            $newAttendanceDate = $newAttendanceDay->format('Y-m-d');
+            if ($oldAttendanceDate == $newAttendanceDate) {
+                return back()->with('error', '既に出勤打刻がされています');
             }
         }
 
         Attendance::create([
             'user_id' => $user_id,
-            'work_start' => Carbon::now(),
+            'start_time' => Carbon::now(),
             'date' => $newAttendanceDay
         ]);
 
-        return back()->with('my_status','出勤打刻が完了しました');
+        return back()->with('my_status', '出勤打刻が完了しました');
     }
 
 
@@ -59,10 +59,20 @@ class AttendanceController extends Controller
 
     public function index()
     {
-        $attendances = Attendance::simplePaginate(5);
-        $today = Carbon::today();
-
-        return view('date', ['attendances' => $attendances],['today' => $today] );
+    $attendances = Attendance::simplePaginate(5);	$today = Carbon::today();
+    $today = Carbon::today();	$attendancesToday = Attendance::where('date', $today)->paginate(5);
+    // dd($attendancesToday);	// dd($attendancesToday);
+    // attendancesの日付と今日の日付が一致した場合に、表示する。whereで絞り込む。	// attendancesの日付と今日の日付が一致した場合に、表示する。whereで絞り込む。
+    // $attendances = Attendance::simplePaginate(5);	// $attendances = Attendance::simplePaginate(5);
+    // dd($attendances);	// dd($attendances);
+        // $today = Carbon::today();	// $today = Carbon::today();
+    $attendanceStarts = Attendance::all();
+    $attendanceEnds = Attendance::all();
+    return view('date', ['attendances' => $attendancesToday],['today' => $today] );	return view('date',
+                    ['attendances' => $attendancesToday],
+                    ['today' => $today],
+                    ['attendanceStarts' => $attendanceStarts],
+                    ['attendanceEnds' => $attendanceEnds],
+                );
     }
-
 }
