@@ -20,28 +20,22 @@ class Attendance extends Model
     public function rests()
     {
         return $this->hasMany(Rest::class);
-
     }
-
     public function sumRest()
     {
         $rests = $this->rests;
-
         $sum = 0;
         foreach($rests as $rest)
         {
             $start_time = $rest->start_time;
             $end_time = $rest->end_time;
             // 秒に直して計算する、差分の秒を足す
-            // $sumRestTime = ($end_time - $start_time);
+            $sumRestTime = ($end_time - $start_time);
             $start_time_cal = strtotime($start_time);
             // dd($start_time_cal);
             $end_time_cal = strtotime($end_time);
-
             // var_dump($end_time);
-            if(!$end_time) {
-                continue;
-            }
+            if(!$end_time) { continue; }
             $sumRestTime = ($end_time_cal - $start_time_cal);
             $sum = $sum + $sumRestTime;
             // dd($sumRestTime);

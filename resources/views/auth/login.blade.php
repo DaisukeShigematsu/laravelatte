@@ -11,7 +11,7 @@
 
         <!-- mail -->
         <div class="formItem">
-            <input id="name" placeholder="名前" class="" type="name" name="name" :value="old('name')" required />
+            <input id="email" placeholder="メールアドレス" class="" type="email" name="email" :value="old('email')" required />
         </div>
 
         <!-- password -->
